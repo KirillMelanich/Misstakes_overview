@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>
+    Literary Format List
+    <a style="float: right" class="btn btn-primary" href="{% url 'catalog:literary-format-create' %}">+</a>
+  </h1>
+
+  {% if literary_format_list %}
+    <table class="table">
+     <tr>
+       <th>ID</th>
+       <th>Name</th>
+       <th>Update</th>
+       <th>Delete</th>
+     </tr>
+
+      {% for literary_format in literary_format_list %}
+        <tr>
+          <td>
+            <li>{{ literary_format.id }}</li>
+          </td>
+          <td>
+            <li>{{ literary_format.name }}</li>
+          </td>
+          <td>
+            <a href="{% url 'catalog:literary-format-update' pk=literary_format.id %}">update</a>
+          </td>
+          <td>
+            <a href="{% url 'catalog:literary-format-delete' pk=literary_format.id %}">delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+      <p>Go and fuck yourself</p>
+    {% endif %}
+
+{% endblock %}

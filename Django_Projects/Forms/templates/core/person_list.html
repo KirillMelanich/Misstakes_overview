@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Person List</h1>
+  <ul>
+    {% for person in person_list %}
+      <li>{{ person.full_name }}
+        (birth: {{ person.birth_year }}
+        {% if person.hobby %} hobby: {{ person.hobby }} {% endif %})
+        {% if person.dick_length %} penis: {{ person.dick_length }} {% endif %})
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}
